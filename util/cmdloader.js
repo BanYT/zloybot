@@ -9,14 +9,14 @@ module.exports = async (client) => {
     client.miscCommands = new Discord.Collection();
 
 
-const miscFiles = await readdir("./commands/Misc/");
+const miscFiles = await readdir("./commands/");
 
 
 
 
 miscFiles.forEach(f => {
     if (!f.endsWith(".js")) return;
-		let misc = require(`../commands/Misc/${f}`);
+		let misc = require(`../commands/${f}`);
     client.miscCommands.set(misc.help.name, misc);
     client.commands.set(misc.help.name, misc);
 	client.aliases.set(misc.help.alias, misc);
